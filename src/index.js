@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
 const authRoutes = require("./routes/auth");
+const equipmentRoutes = require("./routes/equipment");
 
 dotenv.config();
 const { PORT, ORIGIN, MONGO_URI } = process.env;
@@ -16,11 +17,11 @@ app.use(cors({ origin: ORIGIN }));
 app.use(express.json());
 
 // Routes
-
 app.get("/", (req, res) => {
   res.send("Found me!");
 });
 app.use("/api/auth", authRoutes);
+app.use("/api/equipment", equipmentRoutes);
 
 // connect to mongodb
 mongoose
