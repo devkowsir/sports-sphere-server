@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 
 const authRoutes = require("./routes/auth");
 const equipmentRoutes = require("./routes/equipment");
+const equipmentsRoutes = require("./routes/equipments");
 
 dotenv.config();
 const { PORT, ORIGIN, MONGO_URI } = process.env;
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 });
 app.use("/api/auth", authRoutes);
 app.use("/api/equipment", equipmentRoutes);
+app.use("/api/equipments", equipmentsRoutes);
 
 // connect to mongodb
 mongoose
