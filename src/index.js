@@ -3,6 +3,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
+const authRoutes = require("./routes/auth");
+
 dotenv.config();
 const { PORT, ORIGIN, MONGO_URI } = process.env;
 console.log({ PORT, ORIGIN, MONGO_URI });
@@ -18,6 +20,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Found me!");
 });
+app.use("/api/auth", authRoutes);
 
 // connect to mongodb
 mongoose
