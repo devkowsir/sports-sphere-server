@@ -6,10 +6,10 @@ const router = express.Router();
 // Register or Login User
 router.post("/", async (req, res) => {
   try {
-    let user = await User.findOne({ email });
+    let user = await User.findOne({ email: req.body.email });
 
     if (user) {
-      res.status("User already exist with the email.").statusCode(201).send();
+      res.status(201).send({ message: "User already exist with the email.", user });
       return;
     }
     user = new User(req.body);
