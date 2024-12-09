@@ -8,8 +8,8 @@ const equipmentRoutes = require("./routes/equipment");
 const equipmentsRoutes = require("./routes/equipments");
 
 dotenv.config();
-const { PORT, ORIGIN, MONGO_URI } = process.env;
-console.log({ PORT, ORIGIN, MONGO_URI });
+const { PORT, ORIGIN, MONGODB_URI } = process.env;
+console.log({ PORT, ORIGIN, MONGODB_URI });
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.use("/api/equipments", equipmentsRoutes);
 
 // connect to mongodb
 mongoose
-  .connect(MONGO_URI)
+  .connect(MONGODB_URI)
   .then(() => {
     console.log("connected to mongodb");
 
