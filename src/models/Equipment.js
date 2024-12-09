@@ -1,5 +1,13 @@
 const mongoose = require("mongoose");
 
+const customizationSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    cost: { type: Number, required: true },
+  },
+  { _id: false }
+);
+
 const equipmentSchema = new mongoose.Schema({
   image: { type: String, required: true },
   itemName: { type: String, required: true },
@@ -7,7 +15,7 @@ const equipmentSchema = new mongoose.Schema({
   description: { type: String, required: true },
   price: { type: Number, required: true },
   rating: { type: Number, required: true },
-  customization: { type: Array, required: true },
+  customizations: [customizationSchema],
   processingTime: { type: String, required: true },
   stockStatus: { type: Number, required: true },
   userEmail: { type: String, required: true },
