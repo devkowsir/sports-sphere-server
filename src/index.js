@@ -18,21 +18,17 @@ app.use(cors({ origin: ORIGIN }));
 app.use(express.json());
 
 // Routes
-app.get("/", (req, res) => {
-  res.send("Found me!");
-});
+app.get("/", (req, res) => res.send("Found me!"));
 app.use("/api/auth", authRoutes);
 app.use("/api/equipment", equipmentRoutes);
 app.use("/api/equipments", equipmentsRoutes);
 
 // connect to mongodb
 mongoose
-  .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(MONGO_URI)
   .then(() => {
     console.log("connected to mongodb");
 
-    app.listen(PORT || 5000, () => {
-      console.log(`Server running on port ${PORT || 5000}`);
-    });
+    app.listen(PORT || 5000, () => console.log(`Server running on port ${PORT || 5000}`));
   })
-  .catch((e) => console.error("Mongodb connection error", error));
+  .catch((error) => console.error("Mongodb connection error", error));
