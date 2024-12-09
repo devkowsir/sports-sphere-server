@@ -20,6 +20,7 @@ const equipmentSchema = new mongoose.Schema({
   stockStatus: { type: Number, required: true },
   userEmail: { type: String, required: true },
   userName: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.models["Equipment"] || mongoose.model("Equipment", equipmentSchema);
