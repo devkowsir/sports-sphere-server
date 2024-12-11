@@ -9,7 +9,6 @@ const equipmentsRoutes = require("./routes/equipments");
 
 dotenv.config();
 const { PORT, ORIGIN, MONGODB_URI } = process.env;
-console.log({ PORT, ORIGIN, MONGODB_URI });
 
 const app = express();
 
